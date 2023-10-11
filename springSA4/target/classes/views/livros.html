@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Livros</title>
+</head>
+<body>
+<a href="/" class="Botao1">Home Page</a>
+<a href="/livros/adicionar" class="Botao2">Adicionar Livros</a>
+<hr>
+<h2>Livros Cadastrados</h2>
+<table id="tabela">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Título</th>
+			<th>Autor</th>
+			<th>Editora</th>
+			<th>ISBN</th>
+			<th>Opções</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="livro:${livro}">
+			<td th:text=${livro.id}>Id</td>
+			<td th:text=${livro.titulo}>Título</td>
+			<td th:text=${livro.autor}>Autor</td>
+			<td th:text=${livro.editora}>Editora</td>
+			<td th:text=${livro.isbn}>ISBNa</td>
+			<td>
+				<a th:href="@{livro/{id}(id=${livro.id})}" class="Botao2" onclick="confirmar()">Apagar</a>
+				<a th:href="@{livro/editar/{id}(id=${livro.id})}" class="Botao1">Editar</a>
+				</td>
+		</tr>
+	</tbody>
+</table>
+<script src="static/confirmador.js"></script>
+</body>
+</html>
